@@ -1,33 +1,47 @@
 import javax.imageio.ImageTranscoder;
 import java.util.Scanner;
 
+
+
 public class Application {
-    public static long factorial(int x) {
-        long res = x;
-
-        if (x > 1) {
-            res *= factorial(x - 1);
-        }
-
-        return res;
+    public static void inputArray(int[] Arr, int ArrSize){
+        Scanner sc = new Scanner(System.in);
+        for(int i = 0; i < ArrSize; i++)
+            Arr[i] = sc.nextInt();
     }
 
-    public static double getS(int x, int n) {
-        double res = Math.pow(-1, n) * (2 * n * Math.pow(x, 2 * n + 1)) / (double) factorial(2 * n + 1);
-        if (n > 1)
-            res += getS(x, n - 1);
+    public static int getMin(int[] Arr, int ArrSize){
+        int min = Arr[0];
+        for(int i = 0; i < ArrSize; i++){
+            if(min > Arr[i])
+                min = Arr[i];
+        }
 
-        return res;
+        return min;
     }
 
     public static void main(String[] args) {
+        int Na, Nb, Nc;
         Scanner sc = new Scanner(System.in);
-        int x, n;
-        System.out.print("Input N:");
-        n = sc.nextInt();
-        System.out.print("input X:");
-        x = sc.nextInt();
+        System.out.print("Enter Na: ");
+        Na = sc.nextInt();
+        System.out.print("Enter Nb: ");
+        Nb = sc.nextInt();
+        System.out.print("Enter Nc: ");
+        Nc = sc.nextInt();
 
-        System.out.println(getS(x, n));
+        int[] A = new int[Na];
+        int[] B = new int[Nb];
+        int[] C = new int[Nc];
+        System.out.print("Enter A: ");
+        inputArray(A, Na);
+        System.out.print("Enter B: ");
+        inputArray(B, Nb);
+        System.out.print("Enter C: ");
+        inputArray(C, Nc);
+
+        System.out.println("Min A: " + getMin(A, Na));
+        System.out.println("Min B: " + getMin(B, Nb));
+        System.out.println("Min C: " + getMin(C, Nc));
     }
 }
